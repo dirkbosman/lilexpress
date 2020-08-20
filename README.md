@@ -69,11 +69,17 @@ The JSON will look like this:
 In `app.js`, get express to send this json when hitting the route `home` with the method _PUT_.
 Try out your request with curl (or postman):
 
-- `$ curl -X PUT http://localhost:3000/home` => `{"good":"yep"}`
+- Input: `$ curl -X PUT http://localhost:3000/home`
+- Output:
+
+```
+{"good":"yep"}
+```
 
 or
 
-- `$ curl http://localhost:3000/home` =>
+- Input: `$ curl http://localhost:3000/home`
+- Output:
 
 ```html
 <!DOCTYPE html>
@@ -90,7 +96,7 @@ or
 
 ### Appendix
 
-- For hot reloading while developing (not production), there is a lib called [nodemon](https://www.npmjs.com/package/nodemon), which you can install. You can update your `package.json` like below, and you can run with `$ npm start`. (NB!) Make sure it's just on development. For production you'll need another script which only run node app.js.
+- For hot-reloading while developing (not production), there is a lib called [nodemon](https://www.npmjs.com/package/nodemon), which you can install. You can update your `package.json` like below, and you can run with `$ npm start`. (NB!) Make sure it's just on development. For production you'll need another script which only run node app.js.
 
 ```
   "scripts": {
