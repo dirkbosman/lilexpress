@@ -20,15 +20,21 @@ app.get("/test-ejs2", function (req, res) {
   res.render("pages/test-ejs2", { users: ["Bob", "John", "Jane"] });
 });
 
-app.get("/test-ejs3", function (req, res) {
-  res.render("pages/test-ejs3");
-});
-
-app.post("/submit", function (req, res) {
+app.post("/test-esj3", (req, res) => {
   console.log("Name: " + req.body.name);
   console.log("Surname: " + req.body.surname);
+  res.render("pages/test-ejs3");
   // res.redirect("/");
 });
+
+// app.get("/test-ejs3", function (req, res) {
+//   res.render("pages/test-ejs3");
+// });
+
+// app.post("/submit", function (req, res) {
+//   console.log("Name: " + req.body.name);
+//   console.log("Surname: " + req.body.surname);
+// });
 
 app.get("/number/:id", function (req, res) {
   res.send("The number is: " + req.params.id);
