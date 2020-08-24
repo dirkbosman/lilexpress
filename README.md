@@ -1,5 +1,14 @@
 # lilexpress (NodeJS with Express)
 
+## Dependancies:
+
+- npm (node package manager)
+- npm install nodemon
+- npm install express
+- npm install ejs
+- npm install body-parser
+- npm install multer
+
 Create a folder `exercises_express` then go to this folder in your terminal and execute:
 
 ```sh
@@ -94,6 +103,84 @@ or
 </html>
 ```
 
+### Exercise 5 ([Help](https://ejs.co/) && [Help](http://expressjs.com/guide/using-template-engines.html) && [Help](https://scotch.io/tutorials/use-ejs-to-template-your-node-application))
+
+To start with (ejs) templating, create a directory `views` under the root directory of your project. Add a file with this template in:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if (title) { %>
+    <h1><%= title %></h1>
+    <% } %>
+  </body>
+</html>
+```
+
+Render this EJS code if the user accesses the URL `/test-ejs` and render this page with `Hey` as value of `title` variable. Remember that in `app.js`, you need to define the directory of your views and the name of the template engine you are using this way:
+
+```
+// Necessary to render ejs-template(s). Keep these lines before the routes for better organisation.
+app.set("views", "./views");
+app.set("view engine", "ejs");
+
+// First template page
+app.get("/test-ejs", function (req, res) {
+  res.render("pages/test-ejs", { title: "Hey" });
+});
+```
+
+### Exercise 6 ([Help](https://ejs.co/))
+
+We pass an array to our new page `/test-ejs2`:
+
+`{users : ['Bob', 'John', 'Jane' ]}`
+
+Create an EJS page that uses the `forEach` method to list each element.
+
+### Exercise 7 ([Help](https://ejs.co/))
+
+Create a template with two **input:text** fields to enter the first and last name and show it on the `/test-ejs3` route.
+
+### Exercise 8 ([Help](https://github.com/expressjs/body-parser))
+
+Submit the first and last name with the previous form to `/test-ejs3` _POST_ route.
+
+Display in the console (terminal) the result of the _POST_ as a json with fields `name` and `surname`.
+
+### Exercise 9 ([Help](http://expressjs.com/en/api.html#req.params))
+
+Create a route of the type `/number/1` in file `/test-ejs4`, where the number will be a variable `:id` and will be displayed on the page. E.g. on the route `/number/1337` we will see:
+
+```
+The number is 1337
+```
+
+### Exercise 10 ([Help](https://www.npmjs.com/package/nodemon))
+
+If you are tired of always restarting the server, [nodemon](https://www.npmjs.com/package/nodemon) can come to the rescue.
+Install it like this `npm i nodemon --save-dev` (this will also add a new entry under `devDependencies` in your `package.json`). Change the `npm start` script in the `package.json` to be `nodemon app.js`.
+
+Now restart the server; you server will automatically reload on file change.
+To see the newest changes, you'll still have to reload the browser.
+
+Nodemon is only for development use, that's why it's wise to add another entry to your package.json scripts: `"start-prod": "node app.js"`. This is the command you are going to run when you app is deployed on a remote host.
+
+Your `scripts` entry in `package.json` should now look like this:
+
+```
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "nodemon app.js",
+  "start-prod": "node app.js"
+}
+```
+
 ### Appendix
 
 - For hot-reloading while developing (not production), there is a lib called [nodemon](https://www.npmjs.com/package/nodemon), which you can install. You can update your `package.json` like below, and you can run with `$ npm start`. (NB!) Make sure it's just on development. For production you'll need another script which only run node app.js.
@@ -113,59 +200,3 @@ or for a normal node server start, add below to your `package.json` instead:
     "start": "node app.js"
   },
 ```
-
-### Exercise 5 ([Help](https://ejs.co/) && [Help](http://expressjs.com/guide/using-template-engines.html) && [Help](https://scotch.io/tutorials/use-ejs-to-template-your-node-application))
-
-Create a directory `views` under the root directory of your project. Add a file with this template in:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <% if (title) { %>
-    <h1><%= title %></h1>
-  <% } %>
-</body>
-</html>
-```
-Render this EJS code if the user accesses the URL `/test-ejs` and render this page with `Hey` as value of `title` variable.
-
-Remember that in `app.js`, you need to define the directory of your views and the name of the template engine you are using this way:
-```
-app.set('views', './views');
-app.set('view engine', 'ejs');
-```
-Keep these lines before the routes for better organisation.
-
-### Exercise 6 ([Help](https://ejs.co/))
-
-We pass an array to our new page `/test-ejs2`:
-
-`{users : ['Bob', 'John', 'Jane' ]}`
-
-Create an EJS page that uses the `forEach` method to list each element.
-
-### Exercise 7 ([Help](https://ejs.co/))
-
-Create a template with two **input:text** fields to enter the first and last name and send it on the `/test-ejs3` route.
-
-Show it on our page an array to our page `/test-ejs3`:
-
-### Exercise 8 ([Help](https://github.com/expressjs/body-parser))
-
-Create a form (using the method POST) with two **input:text** fields to enter the first and last name and send it on the `/test-ejs3` route.
-
-Display in the console the result of the _POST_ as a json with fields `name` and `surname`.
-
-### Exercise 9 ([Help](http://expressjs.com/en/api.html#req.params))
-
-Create a route of the type `/number/1`  where the number will be a variable `:id` and will be displayed on the page. E.g. on the route `/number/1337` we will see:
-
-```
-The number is 1337
-```
-
