@@ -1,8 +1,11 @@
-# lilexpress (NodeJS, Express, ejs with Multer-middleware)
+# lilexpress
+
+- NodeJS, Express, ejs with Multer-middleware
 
 ## Initial Set-up:
 
 ### Libraries
+
 - npm (node package manager)
 - npm install express
 - npm install ejs
@@ -12,6 +15,7 @@
 - npm init -y
 
 ### Directories
+
 - Create a folder `exercises_express` then go to this folder in your terminal and execute:
 
 ## Exercise 1 ([Help](http://expressjs.com/guide/routing.html))
@@ -173,7 +177,7 @@ Instead of the normal `node` server start, you can add below to your `package.js
 
 If you are tired of always restarting the server while developing (not production), hot-reloading via [nodemon](https://www.npmjs.com/package/nodemon) can come to the rescue.
 
-- Install it like this `npm i nodemon --save-dev` (it will add a new entry under `devDependencies` in your `package.json`). 
+- Install it like this `npm i nodemon --save-dev` (it will add a new entry under `devDependencies` in your `package.json`).
 - Change the `npm start` script in the `package.json` to be `nodemon app.js`.
 - Now restart the server; your server will automatically reload on file change. To see the newest changes, you'll still have to reload the browser.
 - Nodemon is only for development use, that's why it's wise to add another entry to your package.json scripts: `"start-prod": "node app.js"`. This is the command you are going to run when you app is deployed on a remote host.
@@ -187,7 +191,6 @@ Your `scripts` entry in `package.json` should now look like this:
   "start-prod": "node app.js"
 }
 ```
-<<<<<<< HEAD
 
 ### Exercise 11 ([Middleware - i.e. Multer](https://www.npmjs.com/package/multer))
 
@@ -227,5 +230,3 @@ or for a normal node server start, add below to your `package.json` instead:
     "start": "node app.js"
   },
 ```
-=======
->>>>>>> 4f58936ddf5d1e5e8a5ccbcba544bdbbc0c5238a
