@@ -1,4 +1,4 @@
-# lilexpress (NodeJS with Express)
+# lilexpress (NodeJS, Express, ejs with Multer-middleware)
 
 ## Dependancies:
 
@@ -180,6 +180,25 @@ Your `scripts` entry in `package.json` should now look like this:
   "start-prod": "node app.js"
 }
 ```
+
+### Exercise 11 ([Middleware - i.e. Multer](https://www.npmjs.com/package/multer))
+
+Your Mission:
+
+- You need to set-up the back-end to accept a profile picture, save it on your server, and send back the picture itself to the client.
+
+How do I do that?
+
+- _Multer_ is a middleware NPM package for handling multipart/form-data, primarily used for uploading files.
+
+Steps:
+
+- Create a POST route handler for /upload-profile-picture
+- Try to set up Multer on your server following the documentation. You’ll have to set a destination storage, and the way you want the filenames to be handled ([help](https://www.npmjs.com/package/multer#diskstorage)
+  , [help](https://medium.com/dataseries/configuring-express-multer-middleware-and-checking-file-information-497dc7af9eea)).
+- Pass the middleware to your POST route handler. See if you can console.log(req.file) inside of it. If you can; you’re all set. You might want to implement some error handling logic here in case you don’t have a file and then some logic when you do have a file. Look at the info you get. Check if the file is saved correctly, with the right extension name. Multer removes the filename extension by default, so you need to add it back) [help](https://nodejs.org/api/path.html#path_path_extname_path).
+- You want to send the picture back to the client for immediate display. You can use `res.send('<p>some html</p>')` here [help](https://expressjs.com/en/api.html#res.send).
+- You’ll need to use another application level middleware for Express to handle serving static files to the client [help](https://expressjs.com/en/starter/static-files.html).
 
 ### Appendix
 
