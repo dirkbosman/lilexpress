@@ -101,6 +101,6 @@ app.post(
 
 ///////////////////////
 //// Communication ////
-/////////////////////
+///////////////////////
 
 app.listen(3000, () => console.log("Magic Server running on port 3000"));
